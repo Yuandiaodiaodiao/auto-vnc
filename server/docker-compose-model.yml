@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  novnc:
+    container_name: test1
+    image: theasp/novnc:latest
+    environment:
+      # Adjust to your screen size
+    - DISPLAY_WIDTH=1600
+    - DISPLAY_HEIGHT=968
+    - RUN_XTERM=yes
+    ports:
+    - "8081:8080"
+    networks:
+    - x11
+networks:
+  x11:

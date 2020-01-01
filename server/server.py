@@ -3,7 +3,7 @@ import tornado.web
 import os
 import yaml
 import json
-
+vncport="6080"
 datajs = dict()
 with open("dockerUse.json", 'r')as f:
     datajs = json.load(f)
@@ -13,12 +13,12 @@ for i in datajs:
     usedPort.add(datajs[i]["port"])
 
 def adddocker(username,port):
-
+    global vncport
     pathYml = "docker-compose-model.yml"
     with open(pathYml, 'r')as f:
         yml = yaml.load(f)
     yml["services"]["novnc"]["container_name"] = f"novnc-{username}"
-    yml["services"]["novnc"]["ports"] = [f'{port}:8080']
+    yml["services"]["novnc"]["ports"] = [f'{port}:{vncport}']
     filename = f"docker-{username}.yml"
     os.makedirs(f"./{username}")
     filepath=f"./{username}/{filename}"
@@ -55,7 +55,7 @@ def saveUse(username, port):
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('../dist/index.html')
+        self.render('./dist/index.html')
 
 
 class addDesktop(tornado.web.RequestHandler):
@@ -71,14 +71,14 @@ class addDesktop(tornado.web.RequestHandler):
         username = js['username']
         port = getCanUse(username)
         retJs = {
-            "link": f"http://ip.oops-sdu.cn:{port}/vnc.html",
+            "link": f"http://ip.oops-sdu.cn:{port}/#/",
             "dockerStatus":datajs,
         }
         self.write(json.dumps(retJs))
 
 
 settings = {
-    "static_path": "../dist/static",
+    "static_path": "./dist/static",
 }
 
 if __name__ == "__main__":

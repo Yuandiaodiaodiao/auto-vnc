@@ -1,0 +1,6 @@
+bcrypt==3.1.7
+docker-compose==1.25.0
+lxml==4.4.1
+pymongo==3.10.0
+PyYAML==3.12
+tornado==6.0.3

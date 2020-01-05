@@ -1,0 +1,5 @@
+let serverip='ip.oops-sdu.cn'
+let serverport='9006'
+let serverurl=`http://${serverip}:${serverport}`
+export {serverurl}
+export {serverip}

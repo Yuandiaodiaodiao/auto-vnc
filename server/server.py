@@ -5,9 +5,9 @@ import yaml
 import json
 import dbtest
 import time
-
-SERVERIP = 'ip.oops-sdu.cn'
-SERVERPORT = 9006
+import config
+SERVERIP = config.config["serverip"]
+SERVERPORT = config.config["serverport"]
 vncport = "80"
 # datajs = dict()
 
@@ -235,7 +235,7 @@ def clearworker():
 
 if __name__ == "__main__":
     import multiprocessing
-    multiprocessing.Process(target=clearworker).start()
+    # multiprocessing.Process(target=clearworker).start()
 
     application = tornado.web.Application([
         (r"/", MainHandler),

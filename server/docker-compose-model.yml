@@ -3,7 +3,7 @@ services:
 
   novnc:
     container_name: test1
-    image: vivado-ubuntu:0.4
+    image: vivado-ubuntu:0.5
     environment:
       # Adjust to your screen size
 #    - DISPLAY_WIDTH=1600

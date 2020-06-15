@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "dbip": "101.76.222.149",
+    "dbport": 27017,
+    "serverip": "127.0.0.1",
+    "serverport": 9006,
+    "dbuser": "thinpad_plus"
+  }
+}

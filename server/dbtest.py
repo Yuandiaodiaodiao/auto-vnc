@@ -1,8 +1,9 @@
 import pymongo
 import bcrypt
-SERVERIP='101.76.250.242'
-SERVERPORT=27017
-DBUSR="thinpad_plus_test"
+import config
+SERVERIP=config.config["dbip"]
+SERVERPORT=config.config["dbport"]
+DBUSR=config.config["dbuser"]
 myclient = pymongo.MongoClient(f'mongodb://{SERVERIP}:{SERVERPORT}/')
 dblist = myclient.list_database_names()
 mydb=myclient[DBUSR]
@@ -13,7 +14,7 @@ def login(username,passwd=''):
         return True
 
 if __name__=="__main__":
-    login('aaa','')
+    print(login('admin','admin'))
     # dblist = myclient.database_names()
     # for x in dblist:
     #     print(x)
